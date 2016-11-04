@@ -102,29 +102,3 @@ delete_me = []
 uris.each { |uri|
   process_archival_object(uri)
 }
-=begin
-delete_me = []
-record = client.get(uris[1]).parsed
-instances = record['instances']
-do_ref = []
-instances.each { |i|
-do_ref << get_digital_instances(i) if i['digital_object']
-}
-#do_ref = instance['digital_object']['ref']
-
-record['instances'] = modified
-# remove reference to digital object by removing the hash that contains ref to do
-uri = record['uri']
-client.post(uri,record)
-# then remove do
-#client.delete(do_ref[0]) -- deletes do
-digital_object = client.get(do_ref[0]).parsed
-
-#client.delete(dos[0]) if check_do(digital_object)
-
-dos.each { |uri|
-digital_object = client.get(uri).parsed
-client.delete(uri) if check_do(digital_object)
-
-}
-=end
