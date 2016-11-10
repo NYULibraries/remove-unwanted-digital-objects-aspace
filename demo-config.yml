@@ -1,0 +1,3 @@
+username: 'username'
+password: 'password'
+base_uri: '/path/to/aspace:port_backend_processes'
