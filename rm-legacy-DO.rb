@@ -87,11 +87,12 @@ end
 config_file = "config.yml"
 hsh = load_config_yaml(config_file)
 resource = '383'
+repo = 'fales'
 file = "logs/#{Time.now.getutc.to_i}.txt"
 LOG = Logger.new(file)
 config = ArchivesSpace::Configuration.new(hsh)
 @client =  ArchivesSpace::Client.new(config).login
-repo = @client.repositories.find { |r| r['repo_code'] == 'fales' }
+repo = @client.repositories.find { |r| r['repo_code'] == repo }
 uri = repo['uri'] + "/resources/#{resource}/tree"
 records = @client.get(uri).parsed
 children = records['children']
